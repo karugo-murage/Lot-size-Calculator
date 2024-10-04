@@ -7,11 +7,26 @@ function Main (){
         stoploss: "",
         commission: "",
       })
+    const [lotsize, setLotsize] = useState(""); 
 
       function handleSubmit(event) {
         event.preventDefault();
-        console.log(formData);
-        console.log("Submitted data")
+        const riskAmount = parseFloat(formData.riskAmmount);
+        const stopLoss = parseFloat(formData.stoploss);
+        const commission = parseFloat(formData.commission);
+        let result ;
+    
+        // Simple calculation for demonstration (adjust to your actual formula)
+        if (riskAmount && stopLoss) {
+          const pipValuePerLot = 10; // As per your example, 1 pip with 1 lot = $10
+          result = (riskAmount - commission) / (pipValuePerLot * stopLoss); // Basic calculation
+          setLotsize(result.toFixed(2)); 
+        } else {
+          result = "Invalid input";
+          setLotsize(result);
+        }
+
+        console.log(result);
       }
       
       function handleChange(event) {
@@ -31,6 +46,7 @@ function Main (){
           stoploss: "",
           commission: "",
         });
+        setLotsize("_ _ _ _");
         console.log("Form data has been reset");
       }
     return (  
@@ -80,7 +96,7 @@ function Main (){
                 <div className="positionsize">Position Size</div>
                 <div className="outputpositionsize">----------</div>
                 <div className="lotammount">Lotsize to use</div>
-                <div className="outputlotsize"> -----------</div>
+                <div className="outputlotsize"> {lotsize }</div>
                 <button type="submit" onClick={handleReset}>Reset</button>
             </div> 
         </div>
