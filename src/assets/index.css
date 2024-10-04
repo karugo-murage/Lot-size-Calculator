@@ -110,3 +110,16 @@
     opacity: 1; /* Fully visible */
   }
 }
+
+/*footer style*/
+.footernote{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid red;
+
+}
