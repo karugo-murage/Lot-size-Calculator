@@ -10,8 +10,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Header/>
-    <Main/>
     <Instruction/>
+    <Main/>
     <Footer/>
   </React.StrictMode>
   

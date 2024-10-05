@@ -49,8 +49,8 @@
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid red;
-  transform: translateX(-100px); /* Start position (above viewport) */
-  animation: flowInFromLeft 1s ease-out forwards;
+  transform: translateY(100%); /* Start position (above viewport) */
+  animation: moveUpFromBottom 1s ease-out forwards;
   
 }
 @keyframes flowInFromLeft {
@@ -95,8 +95,8 @@
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid red;
-  transform: translateY(100%); /* Start from below the normal position */
-  animation: moveUpFromBottom 1s ease-out forwards; /* Define animation */
+  transform: translatex(-100px); /* Start from below the normal position */
+  animation: flowInFromLeft 1s ease-out forwards; /* Define animation */
 }
 
 
@@ -121,5 +121,13 @@
   max-width: 600px;
   margin: 0 auto;
   border: 1px solid red;
+
+  /* position: relative; */
+  /* bottom: 0; */
+  /* width: 100%; */
+  /* background-color: #333; */
+  /* color: white; */
+  /* text-align: center; */
+  /* padding: 10px; */
 
 }
