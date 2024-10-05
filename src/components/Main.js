@@ -7,23 +7,74 @@ function Main (){
         stoploss: "",
         commission: "",
       })
+    const [formError, setFormError] = useState({
+        riskAmmountError: "",
+        stoplossError: "",
+        commissionError: "",
+      })
+
+    
     const [lotsize, setLotsize] = useState("-------"); 
     const [unitsTraded, setUnitsTraded] = useState("-------"); // New state for units traded
 
+
+    const pipValuePerLot = 10; // Assuming $10 per pip for standard lot (100,000 units)
+    const unitsPerLot = 100000; // 1 standard lot = 100,000 units
+
+
+
     function handleSubmit(event) {
       event.preventDefault();
-  
-      // Parse formData values
+
       const riskAmount = parseFloat(formData.riskAmmount);
       const stopLoss = parseFloat(formData.stoploss);
       const commission = parseFloat(formData.commission);
   
-      const pipValuePerLot = 10; // Assuming $10 per pip for standard lot (100,000 units)
-      const unitsPerLot = 100000; // 1 standard lot = 100,000 units
+      // Reset error state
+      setFormError({
+        riskAmmountError: "",
+        stoplossError: "",
+        commissionError: "",
+      });
   
+      // Validate inputs and update formError state
+      let hasError = false;
+  
+      if (!riskAmount) {
+        setFormError((prevState) => ({
+          ...prevState,
+          riskAmmountError: "Enter a valid risk amount",
+        }));
+        hasError = true;
+      }
+  
+      if (!stopLoss) {
+        setFormError((prevState) => ({
+          ...prevState,
+          stoplossError: "Enter a valid stop loss",
+        }));
+        hasError = true;
+      }
+  
+      if (!Number.isFinite(commission) || commission === "") {
+        setFormError((prevState) => ({
+          ...prevState,
+          commissionError: "Enter a valid commission",
+        }));
+        hasError = true;
+      }
+      if (hasError) {
+        // Prevent further processing if there are validation errors
+        setUnitsTraded("Ooops !!")
+        setLotsize("Ooops !!")
+        return;
+      }
+
       let estimatedLots, finalLots, calculatedUnits;
   
-      if (riskAmount && stopLoss && commission) {
+      // Parse formData values
+    
+      if (riskAmount && stopLoss && (commission || commission === 0)) {
         // Step 1: Estimate lot size without commission
         estimatedLots = riskAmount / (pipValuePerLot * stopLoss);
   
@@ -38,67 +89,23 @@ function Main (){
         setLotsize(finalLots.toFixed(2)); // Format to two decimal places
         setUnitsTraded(calculatedUnits.toFixed(0)); // Show whole number units
       } 
-      /*
-      else if (riskAmount && stopLoss && !commission) {
-  // If commission is missing, calculate lot size without commission
-  let estimatedLots = riskAmount / (pipValuePerLot * stopLoss);
-  let calculatedUnits = estimatedLots * unitsPerLot; // Units traded
-
-  // Update state with the estimated lotsize and units traded
-  setLotsize(estimatedLots.toFixed(2));
-  setUnitsTraded(calculatedUnits.toFixed(0));
-}
-else if (!riskAmount && stopLoss && commission) {
-  // Missing risk amount
-  setLotsize("Risk amount is missing!");
-  setUnitsTraded("Risk amount is missing!");
-} 
-else if (riskAmount && !stopLoss && commission) {
-  // Missing stop loss
-  setLotsize("Stop loss is missing!");
-  setUnitsTraded("Stop loss is missing!");
-} 
-else if (!riskAmount && !stopLoss && commission) {
-  // Missing both risk amount and stop loss
-  setLotsize("Risk amount and Stop loss are missing!");
-  setUnitsTraded("Risk amount and Stop loss are missing!");
-} 
-else if (!riskAmount && stopLoss && !commission) {
-  // Missing both risk amount and commission
-  setLotsize("Risk amount and Commission are missing!");
-  setUnitsTraded("Risk amount and Commission are missing!");
-} 
-else if (riskAmount && !stopLoss && !commission) {
-  // Missing both stop loss and commission
-  setLotsize("Stop loss and Commission are missing!");
-  setUnitsTraded("Stop loss and Commission are missing!");
-} 
-else {
-  // When all values are missing
-  setLotsize("All input values are missing!");
-  setUnitsTraded("All input values are missing!");
-}
-
-
-      */
       else {
         setLotsize("Invalid input");
         setUnitsTraded("Invalid input");
       }
-  
-      console.log(formData, finalLots, calculatedUnits); // Debugging
+      
     }
       
       function handleChange(event) {
         const key = event.target.id
-        console.log(key)
+        // console.log(key)
         setFormData({ 
           ...formData, 
           [key]: event.target.value 
         })
       }
-      console.log(formData)
-      console.log("1,2 testing")
+      // console.log(formData)
+      // console.log("1,2 testing")
 
       function handleReset() {
         setFormData({
@@ -106,9 +113,15 @@ else {
           stoploss: "",
           commission: "",
         });
+        setFormError({
+          riskAmmountError: "",
+          stoplossError: "",
+          commissionError: "",
+        });
+    
         setLotsize("-------");
         setUnitsTraded("-------");
-        console.log("Form data has been reset");
+        // console.log("Form data has been reset");
       }
     return (  
         <>
@@ -124,7 +137,7 @@ else {
                     onChange={handleChange}
                     
                     />
-                  <div className="errormessage"></div>
+                  <div className="errormessage"> {formError.riskAmmountError}</div>
                 <div className="stoploss">Stop Loss ( In pips )</div>
                 <input 
                     type="number" 
@@ -134,7 +147,7 @@ else {
                     value={formData.stoploss}
                     onChange={handleChange} 
                     />
-                  <div className="errormessage"></div>
+                  <div className="errormessage">{formError.stoplossError}</div>
                 <div className="commission">Enter Commision ( per Lot )</div>
                 <input 
                     type="number" 
@@ -145,7 +158,7 @@ else {
                     onChange={handleChange}
 
                  />  
-                 <div className="errormessage"></div> 
+                 <div className="errormessage"> { formError.commissionError}</div> 
                 <br/>
                 <input 
                     type="submit" 
