@@ -14,8 +14,8 @@ function Main (){
       })
 
     
-    const [lotsize, setLotsize] = useState("-------"); 
-    const [unitsTraded, setUnitsTraded] = useState("-------"); // New state for units traded
+    const [lotsize, setLotsize] = useState("0.00"); 
+    const [unitsTraded, setUnitsTraded] = useState(" 0.00"); // New state for units traded
 
 
     const pipValuePerLot = 10; // Assuming $10 per pip for standard lot (100,000 units)
@@ -119,8 +119,8 @@ function Main (){
           commissionError: "",
         });
     
-        setLotsize("-------");
-        setUnitsTraded("-------");
+        setLotsize(" 0.00");
+        setUnitsTraded(" 0.00");
         // console.log("Form data has been reset");
       }
     return (  
@@ -168,11 +168,10 @@ function Main (){
             </form>
 
             <div className="resultContainer">
-                <div className="results">Results</div>
-                <div className="positionsize">Units Traded</div>
-                <div className="outputpositionsize">{unitsTraded}</div>
-                <div className="lotammount">Lotsize to use</div>
-                <div className="outputlotsize"> {lotsize }</div>
+                <div className="positionsize">Units (trade size)</div>
+                <div className="outputpositionsize"> {unitsTraded}</div>
+                <div className="lotammount">Lots (trade size)</div>
+                <div className="outputlotsize">{lotsize }</div>
                 <button type="submit" onClick={handleReset}>Reset</button>
             </div> 
         </div>

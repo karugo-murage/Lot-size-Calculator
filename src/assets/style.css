@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap');
+* {
+  margin: 0;
+  font-family: "Quicksand";
+}
+
+.heading {
+    position: sticky;
+    top: 0;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--header-bg-light);
+    color: var(--header-text-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.subheader {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+ .instructions {
+    align-items: center;
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 15px;
+    background-color: var(--instruction-bg-light);
+    color: var(--instruction-text-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* border: 1px solid red; */
+} 
+ 
+
+.instructions p {
+    margin: 10px 0;
+}
+.container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: var(--main-bg-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs div {
+    margin: 10px 0;
+    font-weight: bold;
+    color: var(--input-label-light);
+}
+
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid var(--input-border-light);
+    border-radius: 5px;
+    transition: border 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: var(--input-border-focus-light);
+}
+
+input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg-light);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--button-hover-light);
+}
+
+.resultContainer {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--result-bg-light);
+    border-radius: 8px;
+}
+
+.outputpositionsize, .outputlotsize {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: var(--result-text-light);
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg-light);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--button-hover-light);
+}
+.footernote {
+    position: sticky;
+    bottom: 0;
+    background-color: var(--footer-bg-light);
+    color: var(--footer-text-light);
+    padding: 15px;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tglink {
+    font-weight: bold;
+    color: var(--footer-link-light);
+    cursor: pointer;
+}
+
+.tglink:hover {
+    text-decoration: underline;
+}
+:root {
+    --header-bg-light: #f9f9f9;
+    --header-text-light: #333;
+    --instruction-bg-light: #fff;
+    --instruction-text-light: #333;
+    --main-bg-light: #f0f0f0;
+    --input-label-light: #333;
+    --input-border-light: #ccc;
+    --input-border-focus-light: #66afe9;
+    --button-bg-light: #007bff;
+    --button-hover-light: #0056b3;
+    --result-bg-light: #e7f3fe;
+    --result-text-light: #333;
+    --footer-bg-light: #f1f1f1;
+    --footer-text-light: #666;
+    --footer-link-light: #007bff;
+}
+
+/* Dark Mode Colors */
+[data-theme='dark'] {
+    --header-bg-light: #333;
+    --header-text-light: #f9f9f9;
+    --instruction-bg-light: #444;
+    --instruction-text-light: #f9f9f9;
+    --main-bg-light: #222;
+    --input-label-light: #f9f9f9;
+    --input-border-light: #666;
+    --input-border-focus-light: #66afe9;
+    --button-bg-light: #007bff;
+    --button-hover-light: #0056b3;
+    --result-bg-light: #2a2a2a;
+    --result-text-light: #f9f9f9;
+    --footer-bg-light: #333;
+    --footer-text-light: #ccc;
+    --footer-link-light: #007bff;
+}
