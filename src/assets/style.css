@@ -5,34 +5,78 @@
 }
 
 .heading {
+    padding: 10px 20px;
+    display: block;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f2f2f2;
+    /* border: 1px solid red; */
     position: sticky;
     top: 0;
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
     background-color: var(--header-bg-light);
     color: var(--header-text-light);
     transition: background-color 0.3s ease, color 0.3s ease;
-    border: 1px solid red;
+    /* border: 1px solid red; */
+    transform: translateY(-100px); /* Start position (above viewport) */
+    animation: slideDown 1s ease-out forwards;
 }
+@keyframes slideDown {
+    from {
+      transform: translateY(-100px); /* Start above the viewport */
+    }
+    to {
+      transform: translateY(0); /* End at normal position */
+    }
+  }
 
 .header {
-    /* align-items: center;
+    /* color: #333;  */
+    color: rgb(250, 70, 4);
+    /* font-size: 24px; */
+    margin: 0; 
     max-width: 600px;
-    margin: 0px auto; */
     font-size: 2.5rem;
     font-weight: bold;
-    border: 1px solid red;
+    /* border: 1px solid red;  */
+}
+.subheaderbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .subheader {
-    align-items: flex-start;
+    /* align-items: flex-start;
     max-width: 600px;
-    margin: 0px auto;
+    margin: 0px auto; */
     font-size: 1.2rem;
+    padding-left: 20px;
     /* margin-top: 10px; */
     opacity: 0.7;
-    color:#0056b3;
-    border: 1px solid red;
+    font-style: italic;
+    color:var(--footer-link-light);
+    /* border: 1px solid red; */
+}
+.theme-icon {
+    padding-right: 20px;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--header-text-light); /* Adjust color for the mode */
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+.theme-icon:hover {
+    color: var(--button-hover-light); /* On hover effect */
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] .theme-icon {
+    color: var(--header-text-light);
 }
  .instructions {
     align-items: center;
