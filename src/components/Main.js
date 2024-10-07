@@ -43,7 +43,7 @@ function Main (){
       if (!riskAmount) {
         setFormError((prevState) => ({
           ...prevState,
-          riskAmmountError: "Enter a valid risk amount",
+          riskAmmountError: "*Enter a valid risk amount*",
         }));
         hasError = true;
       }
@@ -51,7 +51,7 @@ function Main (){
       if (!stopLoss) {
         setFormError((prevState) => ({
           ...prevState,
-          stoplossError: "Enter a valid stop loss",
+          stoplossError: "*Enter a valid stop loss*",
         }));
         hasError = true;
       }
@@ -59,7 +59,7 @@ function Main (){
       if (!Number.isFinite(commission) || commission === "") {
         setFormError((prevState) => ({
           ...prevState,
-          commissionError: "Enter a valid commission",
+          commissionError: "*Enter a valid commission*",
         }));
         hasError = true;
       }

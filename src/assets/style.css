@@ -105,7 +105,14 @@
     transition: background-color 0.3s ease;
 }
 .errormessage{
-    color: red;
+    color: rgb(250, 70, 4)!important;
+    font-size: medium !important;
+    /* font-weight: lighter !important; */
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    /* background-color: #0056b3; */
+    /* border: 1px solid red; */
     /* background-color: red; */
 
 }
